@@ -1,10 +1,10 @@
 ---
-title: "Alert Enrichment: Build vs. Buy"
+title: "GH Analyzer"
 date: 2026-04-04
 draft: false
 section: "Detection & Response"
 type: "project"
-tags: ["Detection engineering", "Alert tuning"]
+tags: ["Vulnerability management", "Supply chain security"]
 description: "Analyzes a GitHub repository's workflow files for supply chain security risks. Takes a local repo path (or clones from URL) and outputs a security audit report."
 ---
 What it analyzes:
