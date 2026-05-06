@@ -1,0 +1,12 @@
+{{ define "main" }}
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="section-intro">{{ . }}</p>{{ end }}
+</header>
+
+<div class="content-list">
+  {{ range where site.RegularPages ".Params.type" "presentations" }}
+    {{ partial "card.html" . }}
+  {{ end }}
+</div>
+{{ end }}
