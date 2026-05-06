@@ -1,0 +1,26 @@
+<div class="coverage-grid">
+  <div class="coverage-grid__row coverage-grid__row--header">
+    <div class="coverage-grid__cell">Resource arn</div>
+    <div class="coverage-grid__cell">Owner tag</div>
+    <div class="coverage-grid__cell">Account_id</div>
+    <div class="coverage-grid__cell">Criticality tag</div>
+  </div>
+  <div class="coverage-grid__row">
+    <div class="coverage-grid__cell" style="font-family:var(--font-mono);font-size:0.75rem;">arn:aws:s3:::customer-exports</div>
+    <div class="coverage-grid__cell coverage-grid__cell--ok">data-eng</div>
+    <div class="coverage-grid__cell coverage-grid__cell--ok">123456789012</div>
+    <div class="coverage-grid__cell coverage-grid__cell--ok">High</div>
+  </div>
+  <div class="coverage-grid__row">
+    <div class="coverage-grid__cell" style="font-family:var(--font-mono);font-size:0.75rem;">arn:aws:rds:::model-training-data</div>
+    <div class="coverage-grid__cell coverage-grid__cell--warn">ml-team (old)</div>
+    <div class="coverage-grid__cell coverage-grid__cell--warn">123456789012</div>
+    <div class="coverage-grid__cell coverage-grid__cell--bad">null</div>
+  </div>
+  <div class="coverage-grid__row">
+    <div class="coverage-grid__cell" style="font-family:var(--font-mono);font-size:0.75rem;">arn:aws:iam::123456789012:role/svc-prod-data-pipeline</div>
+    <div class="coverage-grid__cell coverage-grid__cell--bad">unknown</div>
+    <div class="coverage-grid__cell coverage-grid__cell--bad">null</div>
+    <div class="coverage-grid__cell coverage-grid__cell--bad">null</div>
+  </div>
+</div>

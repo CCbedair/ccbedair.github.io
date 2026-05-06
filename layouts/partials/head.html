@@ -1,0 +1,16 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+<meta name="author" content="{{ site.Params.author }}">
+<title>{{ if not .IsHome }}{{ .Title }} — {{ end }}{{ site.Title }}</title>
+
+{{- $variables := resources.Get "css/variables.css" }}
+{{- $base := resources.Get "css/base.css" }}
+{{- $layout := resources.Get "css/layout.css" }}
+{{- $components := resources.Get "css/components.css" }}
+{{- $responsive := resources.Get "css/responsive.css" }}
+{{- $styles := slice $variables $base $layout $components $responsive | resources.Concat "css/main.css" | minify }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+
+<!-- Inline SVG favicon: monogram "AB" in accent blue on transparent background -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d1117'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='13' fill='%2358a6ff'>AB</text></svg>">

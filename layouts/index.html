@@ -1,0 +1,183 @@
+{{ define "main" }}
+
+{{/* Build content index for filtering */}}
+{{ $pages := site.RegularPages }}
+
+<div class="home-layout">
+
+  <!-- LEFT: About -->
+  <section class="home-about">
+    <h2 class="home-section-title">About me</h2>
+    <p>Senior Security Engineer with experience building detection & response programs, application security practices, and cloud security architectures from the ground up.</p>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="home-divider" aria-hidden="true"></div>
+
+  <!-- RIGHT: Skills -->
+  <section class="home-skills">
+    <h2 class="home-section-title">Skills</h2>
+
+    <div class="skill-group" data-group="dr">
+      <button class="skill-group__title" data-group="dr" data-tags="Detection engineering|Alert tuning|Incident investigation|Detection correlation|Playbook design|Threat intelligence">Detection &amp; Response</button>
+      <div class="skill-pills">
+        <button class="skill-pill" data-tag="Detection engineering">Detection engineering</button>
+        <button class="skill-pill" data-tag="Alert tuning">Alert tuning</button>
+        <button class="skill-pill" data-tag="Incident investigation">Incident investigation</button>
+        <button class="skill-pill" data-tag="Detection correlation">Detection correlation</button>
+        <button class="skill-pill" data-tag="Playbook design">Playbook design</button>
+        <button class="skill-pill" data-tag="Threat intelligence">Threat intelligence</button>
+      </div>
+    </div>
+
+    <div class="skill-group" data-group="appsec">
+      <button class="skill-group__title" data-group="appsec" data-tags="Code review|Threat modeling|SAST/DAST integration|Supply chain security|Vulnerability management|Pen test coordination">Application Security</button>
+      <div class="skill-pills">
+        <button class="skill-pill" data-tag="Code review">Code review</button>
+        <button class="skill-pill" data-tag="Threat modeling">Threat modeling</button>
+        <button class="skill-pill" data-tag="SAST/DAST integration">SAST/DAST integration</button>
+        <button class="skill-pill" data-tag="Supply chain security">Supply chain security</button>
+        <button class="skill-pill" data-tag="Vulnerability management">Vulnerability management</button>
+        <button class="skill-pill" data-tag="Pen test coordination">Pen test coordination</button>
+      </div>
+    </div>
+
+    <div class="skill-group" data-group="cloud">
+      <button class="skill-group__title" data-group="cloud" data-tags="Security architecture|Zero Trust design|IaC security|Container hardening">Cloud Security</button>
+      <div class="skill-pills">
+        <button class="skill-pill" data-tag="Security architecture">Security architecture</button>
+        <button class="skill-pill" data-tag="Zero Trust design">Zero Trust design</button>
+        <button class="skill-pill" data-tag="IaC security">IaC security</button>
+        <button class="skill-pill" data-tag="Container hardening">Container hardening</button>
+      </div>
+    </div>
+
+    <div class="skill-group" data-group="ai">
+      <button class="skill-group__title" data-group="ai" data-tags="Agent threat modeling|Prompt injection|Guardrail testing|Agent auditing">AI Security</button>
+      <div class="skill-pills">
+        <button class="skill-pill" data-tag="Agent threat modeling">Agent threat modeling</button>
+        <button class="skill-pill" data-tag="Prompt injection">Prompt injection</button>
+        <button class="skill-pill" data-tag="Guardrail testing">Guardrail testing</button>
+        <button class="skill-pill" data-tag="Agent auditing">Agent auditing</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- RESULTS PANEL — hidden until a skill or category is selected -->
+<div id="skill-results" class="skill-results" aria-live="polite" hidden>
+  <div class="skill-results__header">
+    <span id="skill-results-label" class="skill-results__label"></span>
+    <button class="skill-results__close" id="skill-results-close" aria-label="Clear filter">✕ Clear</button>
+  </div>
+  <div class="content-list" id="skill-results-list">
+    {{ range $pages }}
+    <article
+      class="card"
+      data-tags="{{ lower (delimit (default slice .Params.tags) "|") }}"
+    >
+      <div class="card__meta">
+        {{ with .Params.section }}<span>{{ . }}</span>{{ end }}
+        {{ with .Params.type }}<span style="text-transform: capitalize; color: var(--accent-secondary);">{{ . }}</span>{{ end }}
+      </div>
+      <h3 class="card__title">{{ .Title }}</h3>
+      {{ with .Params.tags }}
+      <div class="tags">
+        {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
+      </div>
+      {{ end }}
+      <p class="card__description">{{ .Description }}</p>
+      <a class="card__link" href="{{ .RelPermalink }}">Read more →</a>
+    </article>
+    {{ end }}
+  </div>
+  <p class="search-no-results" id="skill-no-results" style="display:none;">No articles tagged with this skill yet.</p>
+</div>
+
+<script>
+(function () {
+  var pills        = document.querySelectorAll('.skill-pill');
+  var groupBtns    = document.querySelectorAll('.skill-group__title');
+  var panel        = document.getElementById('skill-results');
+  var label        = document.getElementById('skill-results-label');
+  var closeBtn     = document.getElementById('skill-results-close');
+  var list         = document.getElementById('skill-results-list');
+  var noResults    = document.getElementById('skill-no-results');
+  var cards        = Array.from(list.querySelectorAll('.card'));
+  var activeTag    = null;   // single pill mode
+  var activeGroup  = null;   // group mode
+
+  function filterByTags(matchTags, isGroup) {
+    // matchTags: array of lowercase tag strings
+    // isGroup: OR logic (any match); single pill: exact match
+    var visible = 0;
+    cards.forEach(function (card) {
+      var cardTags = card.dataset.tags.split('|').map(function(t){ return t.trim(); });
+      var match;
+      if (isGroup) {
+        match = matchTags.some(function (t) { return cardTags.includes(t); });
+      } else {
+        match = cardTags.includes(matchTags[0]);
+      }
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    noResults.style.display = visible === 0 ? '' : 'none';
+    panel.hidden = false;
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function clearAll() {
+    pills.forEach(function (p) { p.classList.remove('skill-pill--active'); });
+    groupBtns.forEach(function (b) { b.classList.remove('skill-group__title--active'); });
+    cards.forEach(function (c) { c.style.display = ''; });
+    panel.hidden = true;
+    activeTag = null;
+    activeGroup = null;
+  }
+
+  // Individual pill clicks
+  pills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      var tag = pill.dataset.tag;
+      if (activeTag === tag) {
+        clearAll();
+        return;
+      }
+      clearAll();
+      activeTag = tag;
+      pill.classList.add('skill-pill--active');
+      label.textContent = tag;
+      filterByTags([tag.toLowerCase()], false);
+    });
+  });
+
+  // Group header clicks
+  groupBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var group = btn.dataset.group;
+      if (activeGroup === group) {
+        clearAll();
+        return;
+      }
+      clearAll();
+      activeGroup = group;
+      btn.classList.add('skill-group__title--active');
+
+      // Activate all pills in this group
+      var groupEl = btn.closest('.skill-group');
+      var groupPills = groupEl.querySelectorAll('.skill-pill');
+      groupPills.forEach(function (p) { p.classList.add('skill-pill--active'); });
+
+      var tags = btn.dataset.tags.split('|').map(function(t){ return t.toLowerCase(); });
+      label.textContent = btn.textContent.trim();
+      filterByTags(tags, true);
+    });
+  });
+
+  closeBtn.addEventListener('click', clearAll);
+})();
+</script>
+
+{{ end }}

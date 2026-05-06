@@ -1,0 +1,132 @@
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.1rem; }
+h5, h6 { font-size: 1rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--text-link-hover);
+  text-decoration: underline;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.25rem;
+}
+
+/* Blockquote */
+blockquote {
+  border-left: 3px solid var(--accent-primary);
+  margin: 1.5rem 0;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--bg-secondary);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  color: var(--text-secondary);
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--border-primary);
+  margin: 2rem 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+/* Inline code */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background-color: var(--bg-tertiary);
+  color: var(--code-text);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  border: 1px solid var(--border-subtle);
+}
+
+/* Code blocks */
+pre {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: var(--border-radius);
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  color: var(--code-text);
+}
+
+/* Strong & em */
+strong {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+em {
+  font-style: italic;
+}

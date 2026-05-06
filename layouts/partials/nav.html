@@ -1,0 +1,44 @@
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a class="nav__brand" href="/">{{ site.Params.author }}</a>
+
+    <ul class="nav__links" role="list">
+      {{ range site.Menus.main }}
+        {{ $page := site.GetPage .URL }}
+        {{ if or (not $page) (not $page.Draft) }}
+        <li>
+          <a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} class="active"{{ end }}>{{ .Name }}</a>
+        </li>
+        {{ end }}
+      {{ end }}
+    </ul>
+
+    <button class="nav__hamburger" aria-label="Toggle navigation menu" aria-expanded="false" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__mobile" id="mobile-menu" aria-hidden="true">
+  {{ range site.Menus.main }}
+    {{ $page := site.GetPage .URL }}
+    {{ if or (not $page) (not $page.Draft) }}
+    <a href="{{ .URL }}">{{ .Name }}</a>
+    {{ end }}
+  {{ end }}
+</div>
+
+<script>
+  (function() {
+    var btn = document.getElementById('hamburger');
+    var menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function() {
+      var open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+    });
+  })();
+</script>

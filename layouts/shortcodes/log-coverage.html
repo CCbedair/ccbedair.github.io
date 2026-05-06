@@ -1,0 +1,32 @@
+<div class="coverage-grid">
+  <div class="coverage-grid__row coverage-grid__row--header">
+    <div class="coverage-grid__cell">Log source</div>
+    <div class="coverage-grid__cell">Ingesting</div>
+    <div class="coverage-grid__cell">Latency</div>
+    <div class="coverage-grid__cell">Alerting</div>
+  </div>
+  <div class="coverage-grid__row">
+    <div class="coverage-grid__cell">Okta</div>
+    <div class="coverage-grid__cell coverage-grid__cell--ok">✓ yes</div>
+    <div class="coverage-grid__cell coverage-grid__cell--warn">⚠ 30 min delay</div>
+    <div class="coverage-grid__cell coverage-grid__cell--warn">⚠ partial</div>
+  </div>
+  <div class="coverage-grid__row">
+    <div class="coverage-grid__cell">CloudTrail (main)</div>
+    <div class="coverage-grid__cell coverage-grid__cell--ok">✓ yes</div>
+    <div class="coverage-grid__cell coverage-grid__cell--ok">✓ &lt;2 min</div>
+    <div class="coverage-grid__cell coverage-grid__cell--ok">✓ yes</div>
+  </div>
+  <div class="coverage-grid__row">
+    <div class="coverage-grid__cell">CloudTrail (new acct)</div>
+    <div class="coverage-grid__cell coverage-grid__cell--bad">✗ not onboarded</div>
+    <div class="coverage-grid__cell coverage-grid__cell--bad">—</div>
+    <div class="coverage-grid__cell coverage-grid__cell--bad">✗ blind</div>
+  </div>
+  <div class="coverage-grid__row">
+    <div class="coverage-grid__cell">Outbound DNS/flows</div>
+    <div class="coverage-grid__cell coverage-grid__cell--ok">✓ yes</div>
+    <div class="coverage-grid__cell coverage-grid__cell--ok">✓ &lt;5 min</div>
+    <div class="coverage-grid__cell coverage-grid__cell--warn">⚠ no exfil rules</div>
+  </div>
+</div>

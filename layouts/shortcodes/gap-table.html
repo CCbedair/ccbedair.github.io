@@ -1,0 +1,39 @@
+<table class="gap-table">
+  <thead>
+    <tr>
+      <th>Ideal alert feature</th>
+      <th>What it requires</th>
+      <th>Reality check</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="gap-table__feature">Blast radius known instantly</td>
+      <td class="gap-table__req">Complete, current asset inventory with criticality labels</td>
+      <td class="gap-table__reality--rare">Rare</td>
+    </tr>
+    <tr>
+      <td class="gap-table__feature">3 correlated signals</td>
+      <td class="gap-table__req">Full log coverage + cross-platform schema normalization</td>
+      <td class="gap-table__reality--partial">Often incomplete</td>
+    </tr>
+    <tr>
+      <td class="gap-table__feature">Threat attribution</td>
+      <td class="gap-table__req">TTP-level intelligence matched after weeks of analysis</td>
+      <td class="gap-table__reality--rare">Takes weeks</td>
+    </tr>
+    <tr>
+      <td class="gap-table__feature">Immediate action available</td>
+      <td class="gap-table__req">Alert queue under throughput ceiling + pre-built playbook</td>
+      <td class="gap-table__reality--partial">Often not there</td>
+    </tr>
+    <tr>
+      <td class="gap-table__feature">Actionable on Friday at 5 PM</td>
+      <td class="gap-table__req">All of the above, working before the incident</td>
+      <td class="gap-table__reality--rare">Rarely all at once</td>
+    </tr>
+  </tbody>
+</table>
+<div class="slide-callout">
+  The ideal alert is a product of systems built before the incident — not a feature of your SIEM. The work is the inventory, the coverage, the throughput math, the cross-source joins. The alert is just the output.
+</div>

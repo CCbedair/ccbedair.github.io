@@ -1,0 +1,40 @@
+<div class="slack-mockup">
+  <div class="slack-mockup__header">
+    <span class="slack-mockup__badge">CRITICAL</span>
+    <span>Security Platform</span>
+    <span class="slack-mockup__time">Friday 4:47 PM</span>
+  </div>
+  <div class="slack-mockup__title">Confirmed credential compromise — immediate action required</div>
+  <div class="slack-mockup__row">
+    <span class="slack-mockup__key">Compromised identity</span>
+    <span class="slack-mockup__val">svc-prod-data-pipeline@corp.com (AWS IAM)</span>
+  </div>
+  <div class="slack-mockup__row">
+    <span class="slack-mockup__key">Environment</span>
+    <span class="slack-mockup__val">Production — us-east-1 data pipeline</span>
+  </div>
+  <div class="slack-mockup__row">
+    <span class="slack-mockup__key">Blast radius</span>
+    <span class="slack-mockup__val">S3: customer-exports, model-training-data · RDS: prod-analytics (read)</span>
+  </div>
+  <div class="slack-mockup__row">
+    <span class="slack-mockup__key">Attributed to</span>
+    <span class="slack-mockup__val">Lazarus Group (DPRK) — confidence: HIGH</span>
+  </div>
+  <div class="slack-mockup__row">
+    <span class="slack-mockup__key">TTPs</span>
+    <span class="slack-mockup__val">T1078 · T1537 · T1071.001</span>
+  </div>
+  <hr class="slack-mockup__divider">
+  <div style="margin-bottom:0.4rem; font-size:0.72rem; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.08em;">Connected signals (3)</div>
+  <div class="slack-mockup__signal">✓ Okta login from 175.45.176.3 — DPRK-attributed IP range</div>
+  <div class="slack-mockup__signal">✓ CloudTrail: 47 ListBucket + GetObject calls in 4 min</div>
+  <div class="slack-mockup__signal">✓ Outbound to transfer.sh — matches known exfil pattern</div>
+  <hr class="slack-mockup__divider">
+  <div style="font-size:0.72rem; color:var(--accent-danger); margin-bottom:0.75rem;">⏱ Exfil window estimated open ~12 min</div>
+  <div class="slack-mockup__actions">
+    <span class="slack-mockup__action-btn">Acknowledge</span>
+    <span class="slack-mockup__action-btn slack-mockup__action-btn--secondary">Close</span>
+    <span class="slack-mockup__action-btn slack-mockup__action-btn--secondary">Other actions →</span>
+  </div>
+</div>

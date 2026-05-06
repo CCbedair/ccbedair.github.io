@@ -1,0 +1,20 @@
+{{ define "main" }}
+<a class="back-link" href="{{ .Parent.RelPermalink }}">Back to {{ .Parent.Title }}</a>
+
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+  <div class="page-header__meta">
+    {{- with .Params.type }}<span style="text-transform: capitalize;">{{ . }}</span>{{ end }}
+    {{- with .Date }} &middot; <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>{{ end }}
+  </div>
+  {{ partial "tags.html" . }}
+</header>
+
+<div class="article-body">
+  {{ .Content }}
+</div>
+
+<div style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-primary);">
+  <a class="back-link" href="{{ .Parent.RelPermalink }}">Back to {{ .Parent.Title }}</a>
+</div>
+{{ end }}

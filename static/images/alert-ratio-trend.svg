@@ -1,0 +1,84 @@
+<svg viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="700" height="350" fill="#0d1117" rx="8"/>
+
+  <!-- Title -->
+  <text x="350" y="30" fill="#e6edf3" font-size="14" font-weight="bold" text-anchor="middle">Actionable Alert Ratio Over Time</text>
+
+  <!-- Chart area: x=80..650, y=50..280 -->
+
+  <!-- Y axis -->
+  <line x1="80" y1="50" x2="80" y2="280" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Y axis labels -->
+  <text x="70" y="280" fill="#8b949e" font-size="10" text-anchor="end">0%</text>
+  <text x="70" y="234" fill="#8b949e" font-size="10" text-anchor="end">10%</text>
+  <text x="70" y="188" fill="#8b949e" font-size="10" text-anchor="end">20%</text>
+  <text x="70" y="142" fill="#8b949e" font-size="10" text-anchor="end">30%</text>
+  <text x="70" y="96" fill="#8b949e" font-size="10" text-anchor="end">40%</text>
+  <text x="70" y="50" fill="#8b949e" font-size="10" text-anchor="end">50%</text>
+
+  <!-- Y axis label -->
+  <text x="20" y="165" fill="#8b949e" font-size="11" text-anchor="middle" transform="rotate(-90 20 165)">Actionable %</text>
+
+  <!-- Grid lines -->
+  <line x1="80" y1="234" x2="650" y2="234" stroke="#21262d" stroke-width="1"/>
+  <line x1="80" y1="188" x2="650" y2="188" stroke="#21262d" stroke-width="1"/>
+  <line x1="80" y1="142" x2="650" y2="142" stroke="#21262d" stroke-width="1"/>
+  <line x1="80" y1="96" x2="650" y2="96" stroke="#21262d" stroke-width="1"/>
+
+  <!-- X axis -->
+  <line x1="80" y1="280" x2="650" y2="280" stroke="#30363d" stroke-width="1"/>
+
+  <!-- X axis labels (months) -->
+  <text x="130" y="298" fill="#8b949e" font-size="10" text-anchor="middle">Month 1</text>
+  <text x="225" y="298" fill="#8b949e" font-size="10" text-anchor="middle">Month 2</text>
+  <text x="320" y="298" fill="#8b949e" font-size="10" text-anchor="middle">Month 3</text>
+  <text x="415" y="298" fill="#8b949e" font-size="10" text-anchor="middle">Month 4</text>
+  <text x="510" y="298" fill="#8b949e" font-size="10" text-anchor="middle">Month 5</text>
+  <text x="600" y="298" fill="#8b949e" font-size="10" text-anchor="middle">Month 6</text>
+
+  <!-- Data line: 15% → 18% → 25% → 30% → 38% → 45% -->
+  <!-- Y mapping: 0%=280, 50%=50, so 1% = 4.6px. 15%=211, 18%=197, 25%=165, 30%=142, 38%=105, 45%=73 -->
+  <polyline
+    points="130,211 225,197 320,165 415,142 510,105 600,73"
+    fill="none"
+    stroke="#58a6ff"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Data points -->
+  <circle cx="130" cy="211" r="4" fill="#58a6ff"/>
+  <circle cx="225" cy="197" r="4" fill="#58a6ff"/>
+  <circle cx="320" cy="165" r="4" fill="#58a6ff"/>
+  <circle cx="415" cy="142" r="4" fill="#58a6ff"/>
+  <circle cx="510" cy="105" r="4" fill="#58a6ff"/>
+  <circle cx="600" cy="73" r="4" fill="#58a6ff"/>
+
+  <!-- Data labels -->
+  <text x="130" y="203" fill="#e6edf3" font-size="10" text-anchor="middle">15%</text>
+  <text x="225" y="189" fill="#e6edf3" font-size="10" text-anchor="middle">18%</text>
+  <text x="320" y="157" fill="#e6edf3" font-size="10" text-anchor="middle">25%</text>
+  <text x="415" y="134" fill="#e6edf3" font-size="10" text-anchor="middle">30%</text>
+  <text x="510" y="97" fill="#e6edf3" font-size="10" text-anchor="middle">38%</text>
+  <text x="600" y="65" fill="#e6edf3" font-size="10" text-anchor="middle">45%</text>
+
+  <!-- Annotation: Environment filtering -->
+  <line x1="225" y1="197" x2="225" y2="310" stroke="#3fb950" stroke-width="1" stroke-dasharray="3"/>
+  <text x="225" y="322" fill="#3fb950" font-size="9" text-anchor="middle">Environment filtering</text>
+  <text x="225" y="333" fill="#3fb950" font-size="9" text-anchor="middle">deployed</text>
+
+  <!-- Annotation: Alert lifecycle process -->
+  <line x1="415" y1="142" x2="415" y2="310" stroke="#d29922" stroke-width="1" stroke-dasharray="3"/>
+  <text x="415" y="322" fill="#d29922" font-size="9" text-anchor="middle">Alert lifecycle</text>
+  <text x="415" y="333" fill="#d29922" font-size="9" text-anchor="middle">process launched</text>
+
+  <!-- Annotation: Auto-remediation -->
+  <line x1="510" y1="105" x2="510" y2="310" stroke="#58a6ff" stroke-width="1" stroke-dasharray="3"/>
+  <text x="510" y="322" fill="#58a6ff" font-size="9" text-anchor="middle">Auto-remediation</text>
+  <text x="510" y="333" fill="#58a6ff" font-size="9" text-anchor="middle">for top 5 rules</text>
+
+</svg>

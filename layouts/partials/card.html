@@ -1,0 +1,6 @@
+<article class="card">
+  <h3 class="card__title">{{ .Title }}</h3>
+  {{ partial "tags.html" . }}
+  <p class="card__description">{{ .Description }}</p>
+  <a class="card__link" href="{{ .RelPermalink }}">Read more →</a>
+</article>

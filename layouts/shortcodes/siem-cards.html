@@ -1,0 +1,19 @@
+<div class="siem-cards">
+  <div class="siem-card">
+    <div class="siem-card__source">Okta</div>
+    <div class="siem-card__title">Login from unusual IP</div>
+    <div class="siem-card__detail">user: svc-pipeline<br>ip: 175.45.176.3<br>country: KP - PRK</div>
+  </div>
+  <span class="siem-cards__arrow">→</span>
+  <div class="siem-card">
+    <div class="siem-card__source">CloudTrail</div>
+    <div class="siem-card__title">High-volume S3 reads</div>
+    <div class="siem-card__detail">role: data-pipeline-exec<br>actions: 47 GetObject<br>bucket: customer-exports</div>
+  </div>
+  <span class="siem-cards__arrow">→</span>
+  <div class="siem-card">
+    <div class="siem-card__source">DNS / Flows</div>
+    <div class="siem-card__title">Outbound to transfer.sh</div>
+    <div class="siem-card__detail">host: pipeline-worker-3<br>dest: transfer.sh:443<br>bytes: 2.1 GB</div>
+  </div>
+</div>
